@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useTheme, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { useDashboardContext } from '../../context/Context';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -20,13 +20,12 @@ import ListItem from '@mui/material/ListItem';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary.dark,
     color: '#fff',
   },
 }));
 
 const ClientGrid = () => {
-  const theme = useTheme();
   const [inboundCase, setInboundCase] = React.useState<InboundCaseResultsInterface[] | null>();
   const [selectedStatus, setSelectedStatus] = React.useState<string>('Todos');
   const { clientId, clientGridFilterParams } = useDashboardContext();
@@ -60,22 +59,21 @@ const ClientGrid = () => {
         console.error('Error al cargar el caso:', error);
       }
     };
-
     getData({ idClient: clientId, dateFrom: dateFrom, dateTo: dateTo });
   }, [clientId, dateFrom, dateTo, selectedStatus]);
 
-  const tableHeadInfo = ['Gestionado', 'ID Caso', 'Telefono', 'Dni', 'Grupo', 'Orden', 'Llamada', 'Estado']
+  const tableHeadInfo = ['Gestionado', 'ID Caso', 'Teléfono', 'Dni', 'Grupo', 'Orden', 'Llamada', 'Estado']
   const caseStatus = ['Todos', 'Transferido', 'Niega confirmación datos', 'Cliente no encontrado en DB', 'Llamando', 'Cortó cliente', 'Mail enviado', 'Indefinido']
 
   return (
     <Box sx={{mt:5}}>
-      <Typography color={theme.palette.primary.main} display={inboundCase ? 'none' : 'block'}>Seleccione un cliente del menu</Typography>
+      <Typography color='primary.main' display={inboundCase ? 'none' : 'block'}>Seleccione un cliente del menú</Typography>
       <Box className='statusFilter'>
         <List disablePadding sx={{display: 'flex', height:'30px', mt:3 }} >
           { caseStatus.map((status) => (
             <ListItem key={status} sx={{width: "fit-content"}}>
               <ListItemButton onClick={() => setSelectedStatus(status)} sx={{padding: 0}}>
-                <ListItemText primary={status} primaryTypographyProps={{fontSize: '12px', textTransform: 'uppercase', color: selectedStatus === status ? theme.palette.text.primary : theme.palette.text.disabled }} />
+                <ListItemText primary={status} primaryTypographyProps={{fontSize: '12px', textTransform: 'uppercase', color: selectedStatus === status ? 'text.primary' : 'text.disabled' }} />
               </ListItemButton>
             </ListItem>
             ))
@@ -100,7 +98,7 @@ const ClientGrid = () => {
               >
                   <TableCell component="th" scope="row">
                     <Stack direction="row" alignItems="center" gap={1}>
-                      <DateRangeIcon sx={{color: theme.palette.primary.dark}} fontSize='small'/>
+                      <DateRangeIcon sx={{color: 'primary.dark'}} fontSize='small'/>
                       {result.last_updated}
                     </Stack>
                   </TableCell>
@@ -111,7 +109,7 @@ const ClientGrid = () => {
                   <TableCell align="right">{result.extra_metadata.orden}</TableCell>
                   <TableCell align="right">
                     <Stack direction="row" alignItems="center" gap={1}>
-                      <RestoreIcon sx={{ color: theme.palette.primary.dark}} fontSize='small'/>
+                      <RestoreIcon sx={{ color: 'primary.dark'}} fontSize='small'/>
                       {result.case_duration}
                     </Stack>
                   </TableCell>
@@ -121,7 +119,7 @@ const ClientGrid = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Typography color={theme.palette.primary.main} display={clientId == 0 ? 'block' : 'none'} sx={{pt:1, fontSize: '12px'}}>
+      <Typography color={'primary.main'} display={clientId == 0 ? 'block' : 'none'} sx={{pt:1, fontSize: '12px'}}>
         Los datos del cliente test no provienen de la API, por lo que no admiten filtrado
       </Typography>
     </Box>

@@ -62,7 +62,7 @@ const Login: React.FC = () => {
         alignItems: 'center',
         }}
     >
-        <Avatar sx={{ m: 1, bgcolor: 'primary.light' }}>
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.light' }}>
         <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -118,6 +118,7 @@ const Login: React.FC = () => {
               fullWidth
               variant="contained"
               onClick={autoLogin}
+              sx={{bgcolor: 'secondary.dark'}}
           >
               AutoLogin
           </Button>

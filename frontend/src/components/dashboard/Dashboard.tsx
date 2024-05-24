@@ -1,5 +1,4 @@
 import React from 'react'
-import { useTheme } from '@mui/material/styles';
 import Menu from '../menu/Menu'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -7,8 +6,7 @@ import DatePicker from './DatePicker';
 import ClientGrid from './ClientGrid';
 
 const Dashboard = () => {
-  const theme = useTheme();
-  const drawerWidth = 240;
+  const drawerWidth = 200;
 
   return (
     <Box style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
@@ -22,7 +20,7 @@ const Dashboard = () => {
             <Typography  sx={{mr:2}}>
               Detalle
             </Typography>
-            <Typography color={theme.palette.text.disabled} >
+            <Typography color={'text.disabled'} >
               Dashboards
             </Typography>
           </Box>          

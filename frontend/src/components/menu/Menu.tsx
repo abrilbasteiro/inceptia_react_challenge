@@ -10,12 +10,12 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
-import { useTheme } from '@mui/material/styles';  
 import Header from './Header';
 import { getClients } from '../../services/ClientService';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Stack from '@mui/material/Stack';
 
 const Menu : React.FC<MenuProps> = ({ container, drawerWidth }) => {
-  const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [clients, setClients] = useState<ClientDataInterface[] | null>();
@@ -55,44 +55,41 @@ const Menu : React.FC<MenuProps> = ({ container, drawerWidth }) => {
   }
 
   const drawer = (
-    <Box sx={{backgroundColor: theme.palette.secondary.light, height:'100vh'}}>
+    <Box sx={{backgroundColor: 'primary.main', height:'100vh', color: '#fff'}}>
       <Toolbar>
       <Typography className='menuHeader' noWrap>
-        CLIENTES
+        <Stack direction="row" alignItems="center" gap={1}>
+          <AccountCircleIcon fontSize='large'/>
+          CLIENTES
+        </Stack>
       </Typography>
         </Toolbar>
       
       <Divider sx={{borderColor:'white'}}/>
-      <List>
+      <List sx={{
+          '&& .Mui-selected':{
+          bgcolor: 'primary.light',
+          color: 'secondary.dark'
+          },
+          '&& .Mui-selected:hover':{
+            backgroundColor: 'primary.dark',
+            color: '#fff',
+          }
+        }}>
         <ListItem key={0} disablePadding>
-          <ListItemButton onClick={() => handleSelectItem(0)} sx={{
-              '&.Mui-selected': {
-                borderRight: `3px solid ${theme.palette.secondary.dark}`,
-                color: theme.palette.secondary.dark,
-                backgroundColor: theme.palette.secondary.main,
-              },
-              }}
-              selected={selectedItem === 0}>
-            <ListItemText primary='test' />
+          <ListItemButton onClick={() => handleSelectItem(0)} selected={selectedItem === 0}>
+            <ListItemText primary='test' sx={{pl:1}}/>
           </ListItemButton>
         </ListItem>
-        <Divider sx={{borderColor:'white'}}/>
+        <Divider sx={{borderColor:'white', opacity: .1}}/>
         {clients && clients.map((client) => (
           <div key={client.id}>
             <ListItem key={client.id} disablePadding >
-              <ListItemButton onClick={() => handleSelectItem(client.id)} sx={{
-                '&.Mui-selected': {
-                  borderRight: `3px solid ${theme.palette.secondary.dark}`,
-                  color: theme.palette.secondary.dark,
-                  backgroundColor: theme.palette.secondary.main
-                }
-                }}
-                selected={selectedItem === client.id}
-                color='secondary'>
-                <ListItemText primary={client.name} />
+              <ListItemButton onClick={() => handleSelectItem(client.id)} selected={selectedItem === client.id}>
+                <ListItemText primary={client.name} sx={{pl:1}} />
               </ListItemButton>
             </ListItem>
-            <Divider sx={{borderColor:'white'}}/>
+            <Divider sx={{borderColor:'white', opacity: .1}}/>
           </div>
           
         ))}
