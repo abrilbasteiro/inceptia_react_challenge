@@ -57,13 +57,13 @@ const Menu : React.FC<MenuProps> = ({ container, drawerWidth }) => {
   const drawer = (
     <Box sx={{backgroundColor: 'primary.main', height:'100%', color: '#fff'}}>
       <Toolbar>
-      <Typography className='menuHeader' noWrap>
         <Stack direction="row" alignItems="center" gap={1}>
           <AccountCircleIcon fontSize='large'/>
-          CLIENTES
+          <Typography className='menuHeader' noWrap>
+            CLIENTES
+          </Typography>
         </Stack>
-      </Typography>
-        </Toolbar>
+      </Toolbar>
       
       <Divider sx={{borderColor:'white'}}/>
       <List sx={{
