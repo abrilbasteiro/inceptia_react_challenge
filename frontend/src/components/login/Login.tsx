@@ -38,21 +38,6 @@ const Login: React.FC = () => {
     }
   };
 
-    const autoLogin = async () => {
-      const loginData: LoginData = {
-        email: 'reactdev@iniceptia.ai',
-        password: '4eSBbHqiCTPdBCTj',
-      };
-      try {
-        const token = await login(loginData);
-        localStorage.setItem('token', token);
-        navigate('/');
-      } catch (error) {
-        setShowAlert(true);
-        setError('Error al iniciar sesión')
-      }
-    };
-
   return (
     <Box
         sx={{
@@ -114,15 +99,6 @@ const Login: React.FC = () => {
           >
               Iniciar sesión
           </Button>
-          <Button
-              fullWidth
-              variant="contained"
-              onClick={autoLogin}
-              sx={{bgcolor: 'secondary.dark'}}
-          >
-              AutoLogin
-          </Button>
-
         </Box>
     </Box>
   );

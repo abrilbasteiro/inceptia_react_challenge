@@ -1,3 +1,37 @@
+# Acerca de mi desarrollo
+
+El proyecto consta de un dashboard desde donde se pueden seleccionar los distintos bots asociados a nuestra aplicación.  
+Agregué un bot "test" para demostrar el funcionamiento del menu lateral y el cambio de las conversaciones mostradas según el cliente seleccionado.
+
+Además, esta página principal cuenta con dos filtros (sólo aplicables a los clientes obtenidos desde la API):
+- Filtro por fecha, mediante selección de días en el calendario.
+- Filtro por estado, seleccionando los estados enlistados horizontalmente sobre la tabla de conversaciones. 
+
+
+## Creación de página de inicio de sesión
+
+Diseñé una página sencilla que permite autenticarse para obtener el token de seguridad.
+
+Para poder desarrollar el proyecto 100% del lado del cliente guardé el token en localStorage, pero en un caso real sería ideal guardarlo en HttpOnly Cookies para garantizar la seguridad de nuestra aplicación.
+
+## Instalación de dependencias
+Aquí se encuentran las principales dependencias del proyecto:
+
+- [Typescript](https://www.typescriptlang.org/) - Tipado estático para mejorar la calidad y mantenibilidad del código. (v^5.4.5)
+- [Material UI](https://mui.com/material-ui/) - Biblioteca de componentes de interfaz de usuario de React basada en el diseño de Material Design de Google. (v^5.15.18)
+
+## Selección de colores
+Para el diseño del proyecto decidí mantener la estructura propuesta, pero seleccioné los colores de la web de [Inceptia](https://www.inceptia.ai/). La paleta utilizada es la siguiente:
+
+![alt text](image-1.png)  
+  
+  
+Abril Basteiro  
+Frontend developer  
+[LinkedIn](https://www.linkedin.com/in/abrilbasteiro/)
+
+***
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
