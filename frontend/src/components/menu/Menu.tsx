@@ -55,7 +55,7 @@ const Menu : React.FC<MenuProps> = ({ container, drawerWidth }) => {
   }
 
   const drawer = (
-    <Box sx={{backgroundColor: 'primary.main', height:'100vh', color: '#fff'}}>
+    <Box sx={{backgroundColor: 'primary.main', height:'100%', color: '#fff'}}>
       <Toolbar>
       <Typography className='menuHeader' noWrap>
         <Stack direction="row" alignItems="center" gap={1}>
